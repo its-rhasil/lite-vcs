@@ -1,5 +1,5 @@
-import hashlib
 from __future__ import annotations
+import hashlib
 import zlib
 class GitObject:
     def __init__(self, type: str, content: bytes):

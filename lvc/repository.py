@@ -1,8 +1,9 @@
 from pathlib import Path
-from blob import Blob
-from objects import GitObject
 import json
 from typing import Dict 
+from .objects import GitObject
+from .blob import Blob
+
 
 class Repository: 
     def __init__(self, path : Path ="."):
@@ -60,15 +61,13 @@ class Repository:
         self.save_index(index)
         print(f"Added {file_path.name} to the staging area")
 
-
-
     def add_path(self, path: str)->None:
         absolute_path = self.path / path
         if not absolute_path.exists():
             raise FileNotFoundError(f"Path {absolute_path} not found!")
         if absolute_path.is_file():
             self.add_file(absolute_path)
-        elif absolute_path.is_dir():
-            self.add_dir(absolute_path)
+        # elif absolute_path.is_dir():
+        #     self.add_dir(absolute_path)
         else:
             raise ValueError("Neither a File nor a directory")

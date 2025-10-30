@@ -28,7 +28,7 @@ def main():
                 print("Repository is not initialized!")
                 return
             for path in args.path:
-                print(path)
+                repo.add_path(path)
     except Exception as e:
         print(f"Error: {e}")
         sys.exit(1)
